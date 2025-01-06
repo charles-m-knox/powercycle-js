@@ -1,0 +1,8 @@
+{
+  "name": "Powercycle JS",
+  "description": "Control an ANT+ bicycle",
+  "version": 1.0,
+  "shell-version": ["3.36", "3.38", "40"],
+  "uuid": "powercycle@charlesmknox.com",
+  "launch": "dist/powercycle.js"
+}

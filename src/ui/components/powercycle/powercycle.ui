@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk" version="4.0" />
+    <object class="AdwStatusPage" id="root">
+        <property name="title" translatable="yes">Powercycle</property>
+        <property name="description" translatable="yes">Change target power, in Watts</property>
+        <child>
+            <object class="AdwClamp">
+                <property name="maximum-size">300</property>
+                <child>
+                    <object class="GtkBox">
+                        <property name="orientation">1</property>
+                        <child>
+                            <object class="GtkListBox">
+                                <property name="selection-mode">0</property>
+                                <style>
+                                    <class name="boxed-list-separate" />
+                                </style>
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="halign">3</property>
+                                        <property name="spacing">6</property>
+                                        <child>
+                                            <object class="GtkSpinButton">
+                                                <property name="halign">3</property>
+                                                <property name="orientation">1</property>
+                                                <property name="wrap">true</property>
+                                                <property name="value">0</property>
+                                                <property name="climb-rate">1</property>
+                                                <property name="adjustment">
+                                                    <object class="GtkAdjustment" id="hundredsBtn">
+                                                        <property name="lower">0</property>
+                                                        <property name="upper">9</property>
+                                                        <property name="step-increment">1</property>
+                                                        <property name="value">0</property>
+                                                    </object>
+                                                </property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkSpinButton">
+                                                <property name="halign">3</property>
+                                                <property name="orientation">1</property>
+                                                <property name="wrap">true</property>
+                                                <property name="climb-rate">1</property>
+                                                <property name="adjustment">
+                                                    <object class="GtkAdjustment" id="tensBtn">
+                                                        <property name="lower">0</property>
+                                                        <property name="upper">9</property>
+                                                        <property name="step-increment">1</property>
+                                                        <property name="value">0</property>
+                                                    </object>
+                                                </property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkSpinButton">
+                                                <property name="halign">3</property>
+                                                <property name="orientation">1</property>
+                                                <property name="wrap">true</property>
+                                                <property name="climb-rate">1</property>
+                                                <property name="adjustment">
+                                                    <object class="GtkAdjustment" id="onesBtn">
+                                                        <property name="lower">0</property>
+                                                        <property name="upper">9</property>
+                                                        <property name="step-increment">1</property>
+                                                        <property name="value">0</property>
+                                                    </object>
+                                                </property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="AdwButtonRow" id="reconnectBtn">
+                                        <property name="title" translatable="yes">Reconnect</property>
+                                        <property name="start-icon-name">view-refresh-symbolic</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>

@@ -1,0 +1,96 @@
+{
+  "name": "powercycle",
+  "version": "0.0.1",
+  "description": "Control an ANT+ bicycle via a gjs+gnome+libadwaita UI and nodejs app",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "jest --coverage",
+    "build:app": "node esbuild.js",
+    "build": "pnpm run build:app",
+    "start:app": "pnpm run build && gjs -m dist/powercycle.js",
+    "debug:app": "pnpm run build:app && GTK_DEBUG=interactive pnpm start:app",
+    "start": "pnpm run build && concurrently 'pnpm run start:ant' 'pnpm run start:app'",
+    "start:ant": "node dist-ant/ant.cjs",
+    "validate": "pnpm run validate:types",
+    "validate:types": "tsc --noEmit",
+    "clear": "rm -rf dist @types",
+    "lint": "eslint ."
+  },
+  "author": "charles-m-knox",
+  "license": "AGPL-3.0-only",
+  "prettier": {
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "printWidth": 100,
+    "quoteProps": "as-needed",
+    "semi": true,
+    "singleAttributePerLine": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "eslintConfig": {
+    "env": {},
+    "ignorePatterns": [
+      "/node_modules/",
+      "/dist/",
+      "/coverage/"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": {}
+    },
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "root": true,
+    "rules": {
+      "sort-imports": "off",
+      "no-duplicate-imports": "error",
+      "import/no-unresolved": [
+        "off",
+        {
+          "ignore": [
+            "^gi://(GObject|GLib|Gtk|Gdk|Adw)\\?version=[0-9.]+$"
+          ]
+        }
+      ]
+    }
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+.tsx?$": [
+        "ts-jest",
+        {}
+      ]
+    }
+  },
+  "packageManager": "pnpm@8.14.0+sha1.bb42032ff80dba5f9245bc1b03470d2fa0b7fb2f",
+  "dependencies": {
+    "@girs/adw-1": "1.7.0-4.0.0-beta.19",
+    "@girs/gio-2.0": "2.82.2-4.0.0-beta.19",
+    "@girs/gjs": "4.0.0-beta.19",
+    "@girs/glib-2.0": "2.82.2-4.0.0-beta.19",
+    "@girs/gtk-4.0": "4.16.3-4.0.0-beta.19",
+    "ant-plus-next": "^0.3.2",
+    "chokidar": "^4.0.3",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "concurrently": "^9.1.0",
+    "esbuild": "^0.24.0",
+    "eslint": "^8",
+    "jest": "^29.7.0",
+    "prettier": "^3.4.2",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3"
+  }
+}

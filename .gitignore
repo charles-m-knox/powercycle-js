@@ -1,0 +1,8 @@
+/.control
+/.env
+/.quit
+/.stats
+/coverage
+/dist
+/dist-ant
+node_modules
